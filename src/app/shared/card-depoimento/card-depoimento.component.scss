@@ -1,0 +1,28 @@
+.card-depoimento{
+  display: flex;
+  max-width: 320px;
+  background-color: #fff7ff;
+  padding: 16px;
+  color: #49454f;
+  box-sizing: border-box;
+
+  img  {
+    max-width: 56px;
+    max-height: 56px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0 16px;
+    margin: 0;
+
+    .texto-depoimento{
+      margin-bottom: 5px;
+    }
+
+    .nome-autor  {
+      font-weight: 700;
+      color: #1D1B20;
+    }
+  }
+}

@@ -1,17 +1,17 @@
 .app-header {
+  background-color: #1D1B20;
+
   .spacer {
     flex: 1 1 auto;
   }
 
   .mat-toolbar {
-    background-color: #1D1B20;
-    color: #fff;
-    padding: 0 256px;
+  background-color: #1D1B20;
+  color: #fff;
 
-    button {
+  button {
       margin: 0 16px;
     }
-
   }
 
   .mat-mdc-outlined-button:not(:disabled) {
