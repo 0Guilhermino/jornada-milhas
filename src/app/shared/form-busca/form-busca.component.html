@@ -9,7 +9,7 @@
         <mat-button-toggle >
           SOMENTE IDA</mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-chip-listbox aria-label="Fish selection">
+      <mat-chip-listbox (click)="openDialog()" aria-label="Seleção de passagem">
         <mat-chip-option selected>
           1 Adulto
         </mat-chip-option>
@@ -25,14 +25,44 @@
         <input matInput placeholder="Origem">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+
+      <button mat-icon-button>
       <mat-icon>sync_alt</mat-icon>
+      </button>
+
       <mat-form-field appearance="outline" class="input-container">
         <mat-label>Destino</mat-label>
         <mat-icon matPrefix>flight_land</mat-icon>
         <input matInput placeholder="Destino">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+
+      <mat-form-field class="input-container" appearance="outline">
+        <mat-label>Data de ida</mat-label>
+        <input matInput [matDatepicker]="datepicker">
+        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancelar</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Confirmar</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="input-container" appearance="outline">
+        <mat-label>Data de volta</mat-label>
+        <input matInput [matDatepicker]="datepickerVolta">
+        <mat-datepicker-toggle matIconSuffix [for]="datepickerVolta"></mat-datepicker-toggle>
+        <mat-datepicker #datepickerVolta>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancelar</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Confirmar</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+      <button mat-flat-button color="primary">BUSCAR</button>
     </div>
   </form>
 </app-card>
+
 
