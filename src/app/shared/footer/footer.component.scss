@@ -1,0 +1,33 @@
+.footer {
+  background-color: #1D1B20;
+  height: 232px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+
+  figure {
+    margin: 0 0 5px 0;
+  }
+
+  app-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  section {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+  }
+
+  .social-section {
+    text-align: center;
+
+    .social-icons{
+      display: flex;
+      list-style: none;
+      padding: 0;
+    }
+  }
+
+}
