@@ -1,7 +1,7 @@
 <div class="card-depoimento">
-  <img  src="assets/img/avatars/image-Thumbnail.png" alt="foto da patagonia">
+  <img  [src]="depoimento.avatar" alt="foto da patagonia">
     <ul>
-      <li class="texto-depoimento">{{depoimento}}</li>
-      <li class="nome-autor">{{autoria}}</li>
+      <li class="texto-depoimento">{{depoimento.texto}}</li>
+      <li class="nome-autor">{{depoimento.autor}}</li>
     </ul>
 </div>

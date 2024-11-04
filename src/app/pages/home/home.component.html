@@ -4,22 +4,14 @@ imgAlt="Banner Jornada milhas"></app-banner>
   <app-form-busca></app-form-busca>
   <h2>Promoções</h2>
   <div class="card-wrapper">
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
+    <ng-container *ngFor="let item of listaPromocoes">
+      <app-card-busca [promocao]="item"></app-card-busca>
+    </ng-container>
   </div>
   <h2>Depoimentos</h2>
-  <div class="card-wrapper">
-    <app-card-depoimento></app-card-depoimento>
-    <app-card-depoimento></app-card-depoimento>
-    <app-card-depoimento></app-card-depoimento>
-    <app-card-depoimento></app-card-depoimento>
-    <app-card-depoimento></app-card-depoimento>
-    <app-card-depoimento></app-card-depoimento>
-  </div>
+<div class="card-wrapper">
+  <app-card-depoimento  *ngFor="let item of listaDepoimentos" [depoimento]="item" />
+</div>
 </app-container>
 <app-banner imgSrc="assets/img/banners/Banner homepage2.png"
 imgAlt="Banner Jornada milhas"></app-banner>

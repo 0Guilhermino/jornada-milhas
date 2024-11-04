@@ -1,12 +1,13 @@
 <app-card variant="secondary" class="form-busca">
   <h2>Passagens</h2>
-  <form >
+  <form [formGroup]="formBuscaService.formularioBusca">
     <div class="flex-container">
-      <mat-button-toggle-group aria-label="Tipo de passagem">
-        <mat-button-toggle >
-          <mat-icon>check</mat-icon>
+      <mat-button-toggle-group aria-label="Tipo de passagem" formControlName="somenteIda">
+        <mat-button-toggle [value]="false">
+          <mat-icon *ngIf="!formBuscaService.formularioBusca.get('somenteIda')?.value">check</mat-icon>
           IDA E VOLTA</mat-button-toggle>
-        <mat-button-toggle >
+        <mat-button-toggle [value]="true">
+          <mat-icon *ngIf="formBuscaService.formularioBusca.get('somenteIda')?.value">check</mat-icon>
           SOMENTE IDA</mat-button-toggle>
       </mat-button-toggle-group>
       <mat-chip-listbox (click)="openDialog()" aria-label="Seleção de passagem">
@@ -19,23 +20,19 @@
       </mat-chip-listbox>
     </div>
     <div class="flex-container">
-      <mat-form-field appearance="outline" class="input-container">
-        <mat-label>Origem</mat-label>
-        <mat-icon matPrefix>flight_takeoff</mat-icon>
-        <input matInput placeholder="Origem">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
+      <app-dropdown-uf
+      label="Origem"
+      prefixIconName="flight_takeoff"
+      placeholder="Origem"></app-dropdown-uf>
 
       <button mat-icon-button>
       <mat-icon>sync_alt</mat-icon>
       </button>
 
-      <mat-form-field appearance="outline" class="input-container">
-        <mat-label>Destino</mat-label>
-        <mat-icon matPrefix>flight_land</mat-icon>
-        <input matInput placeholder="Destino">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
+      <app-dropdown-uf
+      label="Destino"
+      prefixIconName="flight_land"
+      placeholder="Destino"></app-dropdown-uf>
 
       <mat-form-field class="input-container" appearance="outline">
         <mat-label>Data de ida</mat-label>
