@@ -2,60 +2,31 @@
   <h1 mat-dialog-title>Viajante</h1>
   <div mat-dialog-content>
     <div class="flex-container">
-      <div class="selecao-idade">
-        <ul class="">
-          <li>
-            Adultos
-          </li>
-          <li>
-            (Acima de 12 Anos)
-          </li>
-          <li class="">
-            <app-botao-controle operacao="decrementar"></app-botao-controle>
-            <span>1</span>
-            <app-botao-controle operacao="incrementar"></app-botao-controle>
-          </li>
-        </ul>
-      </div>
-
-      <div class="selecao-idade">
-        <ul class="">
-          <li>
-            Crianças
-          </li>
-          <li>
-            (Entre 2 e 11 Anos)
-          </li>
-          <li class="">
-            <app-botao-controle operacao="decrementar"></app-botao-controle>
-            <span>1</span>
-            <app-botao-controle operacao="incrementar"></app-botao-controle>
-          </li>
-        </ul>
-      </div>
-
-      <div class="selecao-idade">
-        <ul class="">
-          <li>
-            Bebês
-          </li>
-          <li>
-            (Até 2 Anos)
-          </li>
-          <li class="">
-            <app-botao-controle operacao="decrementar"></app-botao-controle>
-            <span>1</span>
-            <app-botao-controle operacao="incrementar"></app-botao-controle>
-          </li>
-        </ul>
-      </div>
+        <div class="selecao-idade">
+          <app-selecao-passageiro
+          titulo="Adultos"
+          [formControl]="formBuscaService.obterControle('passageirosAdultos')"
+          subTitulo="(Acima de 12 Anos)"/>
+          <app-selecao-passageiro
+          titulo="Crianças"
+          [formControl]="formBuscaService.obterControle('passageirosCriancas')"
+          subTitulo="(Entre 2 e 11 Anos)"/>
+          <app-selecao-passageiro
+          titulo="Bebês"
+          [formControl]="formBuscaService.obterControle('passageirosBebes')"
+          subTitulo="(Até 2 Anos)"/>
+        </div>
     </div>
     <div class="selecao-container">
       <mat-chip-listbox aria-label="Seleção de passagem">
-        <mat-chip-option selected>
+        <mat-chip-option value="Econômica"
+        (selectionChange)="formBuscaService.alterarTipo($event, 'Econômica')"
+        [selected]="formBuscaService.formularioBusca.get('tipo')?.value === 'Econômica'">
           Econômica
         </mat-chip-option>
-        <mat-chip-option>
+        <mat-chip-option value="Executiva"
+        (selectionChange)="formBuscaService.alterarTipo($event, 'Executiva')"
+        [selected]="formBuscaService.formularioBusca.get('tipo')?.value === 'Executiva'">
           Executiva
         </mat-chip-option>
       </mat-chip-listbox>
@@ -63,8 +34,8 @@
   </div>
   <div mat-dialog-actions>
     <div class="modal-actions">
-      <button mat-raised-button	 mat-dialog-close color="secondary">Cancelar</button>
-      <button mat-raised-button	 color="primary">Aplicar</button>
+      <button mat-raised-button mat-dialog-close color="secondary">Cancelar</button>
+      <button mat-raised-button color="primary">Aplicar</button>
     </div>
-    </div>
+  </div>
 </section>

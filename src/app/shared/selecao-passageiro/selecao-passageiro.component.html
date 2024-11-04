@@ -1,0 +1,20 @@
+<div class="selecao-idade">
+  <ul class="">
+    <li>
+      {{titulo}}
+    </li>
+    <li>
+      {{subTitulo}}
+    </li>
+    <li class="">
+      <app-botao-controle
+      (click)="decremetar()"
+      operacao="decrementar"></app-botao-controle>
+      <!-- <span>{{formBuscaService.formularioBusca.get('passageirosCriancas')?.value}}</span> -->
+      <span>{{value}}</span>
+      <app-botao-controle
+      (click)="incremetar()"
+      operacao="incrementar"></app-botao-controle>
+    </li>
+  </ul>
+</div>

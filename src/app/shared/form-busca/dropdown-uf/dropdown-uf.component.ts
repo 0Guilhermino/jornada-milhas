@@ -15,7 +15,7 @@ export class DropdownUfComponent {
   @Input() label!: string;
   estados: UnidadeFederativa[] = [];
 
-  myControl = new FormControl('');
+  @Input() control = new FormControl('');
   filteredOptions!: Observable<UnidadeFederativa[]>;
 
   constructor(private estadosService: EstadosService) {}
@@ -23,7 +23,7 @@ export class DropdownUfComponent {
   ngOnInit() {
     this.buscarEstados();
 
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.filteredOptions = this.control.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value || ''))
     );
