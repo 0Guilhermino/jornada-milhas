@@ -1,7 +1,7 @@
 <form class="">
-  <mat-form-field appearance="outline" class="input-container">
+  <mat-form-field appearance="outline" class="input-container" id="teste">
     <mat-label>{{label}}</mat-label>
-    <mat-icon matPrefix>{{prefixIconName}}</mat-icon>
+    <mat-icon matPrefix *ngIf="prefixIconName">{{prefixIconName}}</mat-icon>
     <input type="text"
            [placeholder]="placeholder"
            matInput

@@ -32,6 +32,9 @@ import { DropdownUfComponent } from './shared/form-busca/dropdown-uf/dropdown-uf
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SelecaoPassageiroComponent } from './shared/selecao-passageiro/selecao-passageiro.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { LoginComponent } from './pages/login/login.component';
     BotaoControleComponent,
     DropdownUfComponent,
     SelecaoPassageiroComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,9 @@ import { LoginComponent } from './pages/login/login.component';
     MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
