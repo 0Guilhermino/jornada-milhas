@@ -35,6 +35,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FormularioBaseCadastroComponent } from './shared/formulario-base-cadastro/formulario-base-cadastro.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     DropdownUfComponent,
     SelecaoPassageiroComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    FormularioBaseCadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

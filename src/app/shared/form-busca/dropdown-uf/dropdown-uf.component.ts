@@ -9,42 +9,37 @@ import { UnidadeFederativa } from 'src/app/core/types/type';
   templateUrl: './dropdown-uf.component.html',
   styleUrls: ['./dropdown-uf.component.scss'],
 })
-export class DropdownUfComponent {
-  @Input() placeholder!: string;
-  @Input() prefixIconName!: string;
-  @Input() label!: string;
-  estados: UnidadeFederativa[] = [];
+export class DropdownUfComponent { @Input() label: string = '';
+  @Input() iconePrefixo: string = '';
+  @Input() control!: FormControl;
 
-  @Input() control = new FormControl('');
-  filteredOptions!: Observable<UnidadeFederativa[]>;
+  unidadesFederativas: UnidadeFederativa[] = [];
 
-  constructor(private estadosService: EstadosService) {}
+  filteredOptions$?: Observable<UnidadeFederativa[]>;
 
-  ngOnInit() {
-    this.buscarEstados();
 
-    this.filteredOptions = this.control.valueChanges.pipe(
+  constructor(
+    private unidadeFederativaService: EstadosService) {
+
+  }
+
+  ngOnInit(): void {
+    this.unidadeFederativaService.listarEstados()
+      .subscribe(dados => {
+        this.unidadesFederativas = dados
+        console.log(this.unidadesFederativas)
+      })
+    this.filteredOptions$ = this.control.valueChanges.pipe(
       startWith(''),
-      map((value) => this._filter(value || ''))
-    );
+      map(value => this.filtrarUfs(value))
+    )
   }
 
-  private _filter(value: string): UnidadeFederativa[] {
-    const filterValue = value.toLowerCase();
-
-    return this.estados.filter((option) =>
-      option.nome.toLowerCase().includes(filterValue)
-    );
-  }
-
-  buscarEstados() {
-    this.estadosService.listarEstados().subscribe({
-      next: (estados) => {
-        this.estados = estados;
-      },
-      error: (err) => {
-        console.error(err);
-      },
-    });
+  filtrarUfs(value: string): UnidadeFederativa[] {
+    const valorFiltrado = value?.toLowerCase();
+    const result = this.unidadesFederativas.filter(
+      estado => estado.nome.toLowerCase().includes(valorFiltrado)
+    )
+    return result
   }
 }

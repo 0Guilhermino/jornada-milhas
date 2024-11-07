@@ -1,17 +1,19 @@
-<form class="">
-  <mat-form-field appearance="outline" class="input-container" id="teste">
-    <mat-label>{{label}}</mat-label>
-    <mat-icon matPrefix *ngIf="prefixIconName">{{prefixIconName}}</mat-icon>
-    <input type="text"
-           [placeholder]="placeholder"
-           matInput
-           [formControl]="control"
-           [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nome">
-        {{option.nome}}
+<mat-form-field class="input-container" appearance="outline">
+  <mat-label>{{ label }}</mat-label>
+  <mat-icon matPrefix *ngIf="iconePrefixo">
+      {{ iconePrefixo }}
+  </mat-icon>
+  <input
+      matInput
+      placeholder="Origem"
+      [formControl]="control"
+      [name]="label"
+      ngDefaultControl
+      [matAutocomplete]="auto">
+  <mat-icon matSuffix>search</mat-icon>
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let estado of filteredOptions$ | async" [value]="estado.nome">
+        {{estado.nome}}
       </mat-option>
     </mat-autocomplete>
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-</form>
+</mat-form-field>
