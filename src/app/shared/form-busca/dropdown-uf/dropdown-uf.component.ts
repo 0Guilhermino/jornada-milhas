@@ -41,4 +41,9 @@ export class DropdownUfComponent { @Input() label: string = '';
     )
     return result
   }
+
+  displayFn(estado: UnidadeFederativa): string {
+    return estado ? estado.nome : '';
+  }
+
 }

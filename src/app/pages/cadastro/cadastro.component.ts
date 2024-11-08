@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { FormBuscaService } from 'src/app/core/services/form-busca.service';
+import { FormularioBaseService } from 'src/app/core/services/formulario-base.service';
+import { Usuario } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,10 +10,6 @@ import { FormBuscaService } from 'src/app/core/services/form-busca.service';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent {
-register(event: any) {
-  console.log(event, 'form angelo');
-
-}
 
   cadastroForm!: FormGroup;
   generos: string[] = ['Masculino', 'Feminino', 'Prefiro não informar'];
@@ -21,9 +17,8 @@ register(event: any) {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private authService: AuthService,
-    protected formBuscaService: FormBuscaService,
-    private router: Router){}
+    private _formularioBaseService: FormularioBaseService,
+    private _router: Router){}
   ngOnInit(): void {
     this.initForm();
   }
@@ -44,9 +39,21 @@ register(event: any) {
     });
   }
 
-  cadastrar() {
-
+  cadastrar(event: Usuario) {
+    this._formularioBaseService.cadastrar(event)
+    .subscribe(
+      {
+        next: (data: Usuario) => {
+          console.log(data);
+          this._router.navigate(['/']);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      }
+    )
   }
+
 
   obterControle(nome:string): FormControl {
     const control = this.cadastroForm.get(nome);
