@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UnidadeFederativa } from 'src/app/core/types/type';
+import { EqualsTo } from '../validations/EqualsTo';
 
 @Component({
   selector: 'app-form-base-cadastro',
@@ -28,8 +29,8 @@ export class FormularioBaseCadastroComponent implements OnInit{
       genero: ['outro'],
       telefone: [null, Validators.required],
       estado: this.estadoControl,
-      confirmarEmail: [null, [Validators.required, Validators.email]],
-      confirmarSenha: [null, [Validators.required, Validators.minLength(3)]],
+      confirmarEmail: [null, [Validators.required, Validators.email, EqualsTo.equalTo('email')]],
+      confirmarSenha: [null, [Validators.required, Validators.minLength(3), EqualsTo.equalTo('senha')]],
       aceitarTermos: [null, [Validators.requiredTrue]]
     });
   }
