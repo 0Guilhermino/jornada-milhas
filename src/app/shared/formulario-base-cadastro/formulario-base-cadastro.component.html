@@ -1,12 +1,12 @@
 <app-container>
   <mat-card>
-    <form [formGroup]="cadastroForm">
+    <form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
       <mat-card-title>
         Crie sua conta
       </mat-card-title>
       <section>
-        <div class="acoesPerfil">
-          <h2>Dados pessoais</h2>
+        <div class="acoesPerfil" *ngIf="cadastroComponent">
+          <h2 >Dados pessoais</h2>
           <button mat-stroked-button color="primary">
             <mat-icon>logout</mat-icon>
             DESLOGAR
@@ -68,8 +68,8 @@
           </div>
         </div>
       </mat-card-content>
-      <mat-divider></mat-divider>
-      <div class="acessoPerfil">
+      <mat-divider *ngIf="cadastroComponent"></mat-divider>
+      <div class="acessoPerfil" *ngIf="cadastroComponent">
         <h2>Dados de acesso</h2>
       </div>
       <mat-card-content>

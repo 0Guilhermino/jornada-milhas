@@ -1,3 +1,5 @@
 <app-banner imgSrc="assets/imagens/banner-cadastro.png" imgAlt="Banner tela de cadastro"></app-banner>
-<app-form-base-cadastro>
+<app-form-base-cadastro
+[cadastroComponent]="false"
+(sendForm)="register($event)">
 </app-form-base-cadastro>

@@ -10,6 +10,10 @@ import { FormBuscaService } from 'src/app/core/services/form-busca.service';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent {
+register(event: any) {
+  console.log(event, 'form angelo');
+
+}
 
   cadastroForm!: FormGroup;
   generos: string[] = ['Masculino', 'Feminino', 'Prefiro não informar'];

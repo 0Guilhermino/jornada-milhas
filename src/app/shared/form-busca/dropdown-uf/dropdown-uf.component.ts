@@ -27,7 +27,6 @@ export class DropdownUfComponent { @Input() label: string = '';
     this.unidadeFederativaService.listarEstados()
       .subscribe(dados => {
         this.unidadesFederativas = dados
-        console.log(this.unidadesFederativas)
       })
     this.filteredOptions$ = this.control.valueChanges.pipe(
       startWith(''),
