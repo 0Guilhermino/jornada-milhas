@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit{
     const LoginBody: Login = this.loginForm.value;
     this.authService.login(LoginBody).subscribe({
         next: value => {
-          localStorage.setItem('access_token', value.access_token);
           this.router.navigateByUrl('/')
         }, error: error => {
           console.error(error);
