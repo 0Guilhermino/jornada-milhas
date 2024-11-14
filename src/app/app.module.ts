@@ -37,6 +37,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormularioBaseCadastroComponent } from './shared/formulario-base-cadastro/formulario-base-cadastro.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {MatDividerModule} from '@angular/material/divider';
     SelecaoPassageiroComponent,
     LoginComponent,
     CadastroComponent,
-    FormularioBaseCadastroComponent
+    FormularioBaseCadastroComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

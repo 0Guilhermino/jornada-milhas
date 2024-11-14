@@ -1,8 +1,8 @@
 <app-card variant="secondary" class="form-busca">
   <h2>Passagens</h2>
   <form [formGroup]="formBuscaService.formularioBusca" (ngSubmit)="buscar()">
-    <div class="flex-container">
-      <mat-button-toggle-group aria-label="Tipo de passagem" formControlName="somenteIda">
+    <div class="flex-container container-tipo-passagem">
+      <mat-button-toggle-group class="toggle-group-tipo-passagem" aria-label="Tipo de passagem" formControlName="somenteIda">
         <mat-button-toggle [value]="false">
           <mat-icon *ngIf="!formBuscaService.formularioBusca.get('somenteIda')?.value">check</mat-icon>
           IDA E VOLTA</mat-button-toggle>
@@ -67,7 +67,8 @@
           </mat-datepicker-actions>
         </mat-datepicker>
       </mat-form-field>
-      <button mat-flat-button color="primary" >BUSCAR</button>
+      <button mat-flat-button class="btn-search"
+      color="primary" >BUSCAR</button>
     </div>
   </form>
 </app-card>

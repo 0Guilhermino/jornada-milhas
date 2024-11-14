@@ -35,7 +35,7 @@ export class DropdownUfComponent { @Input() label: string = '';
   }
 
   filtrarUfs(value: string): UnidadeFederativa[] {
-    const valorFiltrado = value?.toLowerCase();
+    const valorFiltrado = value ? value?.toLowerCase() : 'v';
     const result = this.unidadesFederativas.filter(
       estado => estado.nome.toLowerCase().includes(valorFiltrado)
     )

@@ -9,9 +9,12 @@ import { EqualsTo } from '../validations/EqualsTo';
   styleUrls: ['./formulario-base-cadastro.component.scss']
 })
 export class FormularioBaseCadastroComponent implements OnInit{
+
   cadastroForm!: FormGroup;
   estadoControl = new FormControl<string | null>(null, Validators.required);
   @Input() cadastroComponent: boolean = false;
+  @Input() titulo: string = 'Crie sua conta';
+  @Input() nomeBotaoEnviar: string = 'CADASTRAR';
   @Output() sendForm: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
@@ -31,11 +34,23 @@ export class FormularioBaseCadastroComponent implements OnInit{
       estado: this.estadoControl,
       confirmarEmail: [null, [Validators.required, Validators.email, EqualsTo.equalTo('email')]],
       confirmarSenha: [null, [Validators.required, Validators.minLength(3), EqualsTo.equalTo('senha')]],
-      aceitarTermos: [null, [Validators.requiredTrue]]
+      aceitarTermos: [false, [Validators.requiredTrue]]
     });
+
+    if (!this.cadastroComponent) {
+      this.cadastroForm.get('aceitarTermos')?.setValidators(null);
+    } else {
+      this.cadastroForm.get('aceitarTermos')?.setValidators([Validators.requiredTrue]);
+    }
+
+    this.cadastroForm.get('aceitarTermos')?.updateValueAndValidity();
+
   }
 
   submitForm() {
     this.sendForm.emit(this.cadastroForm.value);
+  }
+
+  deslogar() {
   }
 }
